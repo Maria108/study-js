@@ -1,33 +1,16 @@
-// var M = 1000
-// var D = 500
-// var C = 100
-// var L = 50
-// var X = 10
-// var V = 5
-// var I = 1
-
 var obj = {
-        'I': 1,
-        'V': 5,
-        'X': 10,
-        'L': 50,
-        'C': 100,
-        'D': 500,
-        'M': 1000
-    }
-    // obj.I === obj['I']
+    'I': 1,
+    'V': 5,
+    'X': 10,
+    'L': 50,
+    'C': 100,
+    'D': 500,
+    'M': 1000
+}
 
-/* 
-I II III IV V VI VII VIII IX
-X XI XII XIII XIV XV XVI XVII XVII XIX 
-XX ...
-XXX ...
-XL ...
-L ...
-*/
-function RomeToArabic(str) { // str = XLVII / 77
+function RomeToArabic(str) {
     var sum = 0
-    var arr = str.split('').reverse() // arr = [L, X, X, I, X], arr = [LXXVII]
+    var arr = str.split('').reverse()
     for (var idx = 0; idx < arr.length; idx++) {
         var el = arr[idx]
         var el2 = arr[idx + 1]
@@ -47,4 +30,4 @@ function RomeToArabic(str) { // str = XLVII / 77
     return sum
 }
 
-console.log(RomeToArabic('MMDCLXVI'));
+console.log(RomeToArabic('MCDVI'));

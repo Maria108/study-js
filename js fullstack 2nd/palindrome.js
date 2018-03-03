@@ -4,14 +4,12 @@ Have the function palindrome(str) accept a string argument, and return the boole
 
 function palindrome(str) {
     var lowerCaseStr = str.toLowerCase()
-    for (idx = 0; idx < lowerCaseStr.length / 2; idx++) {
-        if (lowerCaseStr[idx] === lowerCaseStr[lowerCaseStr.length - 1 - idx]) {
-            return true
-        } else {
+    for (idx = 0; idx < lowerCaseStr.length; idx++) {
+        if (lowerCaseStr[idx] !== lowerCaseStr[lowerCaseStr.length - 1 - idx]) {
             return false
         }
     }
-
+    return true
 }
 
 //EXAMPLE TESTS
