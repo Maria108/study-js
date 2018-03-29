@@ -30,4 +30,20 @@ function RomeToArabic(str) {
     return sum
 }
 
-console.log(RomeToArabic('MCDVI'));
+console.log(RomeToArabic('DCLXVI'));
+
+/*  I = 1,
+    V = 5,
+    X = 10,
+    L = 50,
+    C = 100,
+    D = 500,
+    M = 1000 
+    
+    Examples:
+    input: MCDVI   outpout: 1406
+    input: MMMCIV   outpout: 3104
+    input: CMLII   outpout: 952
+    input: MMCDXLV   outpout: 2445
+    input: DCLXVI   outpout: 666
+    */
