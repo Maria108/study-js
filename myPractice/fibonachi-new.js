@@ -10,7 +10,7 @@ function fibonacci(number) {
     return nextNum;
 }
 
-console.log(fibonacci(7));
+console.log(fibonacci(3));
 
 // function fibonacciRec(prev, next, pos) {
 //     if (pos === 0) {
