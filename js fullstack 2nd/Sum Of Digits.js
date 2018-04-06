@@ -6,7 +6,7 @@ Create the function sumOfDigits that adds individual digits of a number and retu
 
 function sumOfDigits(num) {
     var sum = 0;
-    while (num > 0;) {
+    while (num > 0) {
         sum = sum + num % 10
         num = Math.floor(num / 10)
     }
