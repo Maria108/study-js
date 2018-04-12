@@ -17,8 +17,8 @@ function exponentiate(num1, num2) {
 
 //EXAMPLE TESTS
 
-console.log(exponentiate(2, 24));
+console.log(exponentiate(2, 2));
 // OUTPUT: 4
 
-console.log(exponentiate(3, 24));
+console.log(exponentiate(4, 9));
 // OUTPUT: 81

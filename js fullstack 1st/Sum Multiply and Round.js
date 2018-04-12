@@ -5,10 +5,10 @@ The function should sum the first two numbers passed in, and then round them dow
 */
 
 function sumMultiplyAndRound(num1, num2, num3) {
-    return Math.floor(Math.floor(num1 + num2) * num3)
+    return Math.ceil(Math.floor(num1 + num2) * num3)
 }
 
 //EXAMPLE TESTS
 
-console.log(sumMultiplyAndRound(2, 3.5, 6.2))
+console.log(sumMultiplyAndRound(1.5, 3.9, 5.2))
     //OUTPUT: 31

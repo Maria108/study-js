@@ -21,7 +21,7 @@ function removeZeros(num) {
 
 //EXAMPLE TESTS
 
-console.log(removeZeros(6006606.203));
+console.log(removeZeros(400307102.005));
 //OUTPUT: 6666.23
 
 console.log(removeZeros(0));

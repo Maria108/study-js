@@ -99,5 +99,24 @@ function longestConsec(strarr, k) {
     return newArr.join('')
 }
 
+
+function longest_consec(array, n) {
+    result = "";
+
+    for (let i = 0; i < array.length - n; i++) {
+        let test = array[i];
+        for (let k = 1; k < n; k++) {
+            test += array[i + k];
+        }
+        if (test.length > result.length) {
+            result = test;
+        }
+
+
+    }
+    console.log(result);
+    return result;
+}
+
 console.log(longestConsec(["zone", "abigail", "theta", "form", "libe", "zas"], 2))
 console.log(longestConsec(["ejjjjmmtthh", "zxxuueeg", "aanlljrrrxx", "dqqqaaabbb", "oocccffuucccjjjkkkjyyyeehh"], 1))
