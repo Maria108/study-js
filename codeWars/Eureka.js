@@ -14,13 +14,13 @@ function eurika(num1, num2) {
     var nextDigit = Math.floor(num1 / 10) % 10;
     var firstDigit = Math.floor(num1 / 10);
     var result = firstDigit + (lastDigit ** 2)
-for(num1; num1 > 0; num1++){
+    for (num1; num1 > 0; num1++) {
 
-}
+    }
 
-for (num1; num1 < num2; num1++){
+    for (num1; num1 < num2; num1++) {
 
-}
+    }
 
     if (result === num) {
         return true
