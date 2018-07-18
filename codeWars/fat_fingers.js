@@ -15,25 +15,51 @@ Examples:
 If the given string is null, return null.
 
 If the given string is "", the answer should be evident.*/
+// var fatFingers = function(str) {
+//   if (str === null) {
+//     return null;
+//   }
+//   let counter = 0;
+//   for (let i = 0; i < str.length; i++) {
+//     if (str[i].toLowerCase() === 'a' && counter === 0) {
+//       str = str.slice(0, i).concat(str.slice(i + 1).toUpperCase());
+//       i = -1;
+//       counter++;
+//     } else if (str[i] === 'a' && counter !== 0) {
+//       str = str.slice(0, i).concat(str.slice(i + 1).toUpperCase());
+//       i = -1;
+//     }
+//     if (str[i] === 'A' && counter !== 0) {
+//       str = str.slice(0, i).concat(str.slice(i + 1).toLowerCase());
+//       i = -1;
+//     }
+//   }
+//   return str;
+// };
+
+// console.log(fatFingers('The A quick brown fox jumps over the lazy dog.')); // The  QUICK BROWN FOX Lzy
+
+// console.log(fatFingers('Aa34aAAaamafasadAaasaup')); // 34MfSdSup
+// console.log(fatFingers('AaaAAaaaAAAa')); // 34MfSdSup
+
 var fatFingers = function(str) {
   if (str === null) {
     return null;
   }
+  let counter = 1;
   for (let i = 0; i < str.length; i++) {
-    if (str[i] === 'a') {
+    if (str[i].toLowerCase() === 'a' && counter % 2 !== 0) {
       str = str.slice(0, i).concat(str.slice(i + 1).toUpperCase());
-      i = 0;
-    }
-    if (str[i] === 'A') {
+      i = -1;
+      counter++;
+    } else if (str[i].toLowerCase() === 'a' && counter % 2 === 0) {
       str = str.slice(0, i).concat(str.slice(i + 1).toLowerCase());
-      i = 0;
+      i = -1;
+      counter++;
     }
-  }
-  if (str.length === 1 && str.toLowerCase() === 'a') {
-    return '';
   }
   return str;
 };
 
-// console.log(fatFingers('The a quick brown fox jumps over the lazy dog.'));
-console.log(fatFingers('aaAAaAaaAAAa'));
+console.log(fatFingers('Aa34aAAaamafasadAaasaup')); // 34MfSdSup
+console.log(fatFingers('Important message')); // ImportNT MESSge
