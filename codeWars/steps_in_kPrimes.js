@@ -28,39 +28,67 @@ So this function should return an array of all the pairs of k-prime numbers spac
 
  */
 
-function kprimesStep(k, step, start, nd) {
-  let arr = [];
+function checkPrime(k, num) {
   let counter = 0;
-  let more = 0;
-  for (let i = 3; i <= nd; i++) {
+  for (let factor = 2; factor < num; factor++) {
     counter = 0;
-    more = 0;
-    for (let factor = 2; factor < i; factor++) {
-      if (i % factor === 0 && isPrime(factor)) {
-        counter++;
-      } else if (i % factor === 0 && !isPrime(factor)) {
-        more++;
-      }
-      if (i === factor * factor && isPrime(factor)) {
-        counter++;
-      }
+    if (num % factor === 0 && isPrime(factor)) {
+      counter++;
+    } else if (num % factor === 0 && !isPrime(factor)) {
+      continue;
     }
-    if (counter === k && more === 0) {
-      arr.push(i);
+    if (num === factor * factor && isPrime(factor)) {
+      counter++;
     }
   }
+  if (counter === k) {
+    return true;
+  }
+}
+
+function kprimesStep(k, step, start, nd) {
   let output = [];
-  for (let i = start; i < arr.length; i++) {
-    for (let next = start + 1; next < arr.length; next++) {
-      if (arr[next] - arr[i] > step) {
-        break;
-      } else if (arr[next] - arr[i] === step) {
-        output.push([arr[i], arr[next]]);
-      }
+  for (let i = start; i < nd; i++) {
+    let end = start + step;
+    if (checkPrime(k, start) && checkPrime(k, end)) {
+      output.push([start, start + step]);
     }
   }
   return output;
 }
+
+// function kprimesStep(k, step, start, nd) {
+//   // 6, 14, 2113665, 2113889
+//   let arr = [];
+//   let counter = 0;
+//   for (let i = start; i <= nd; i++) {
+//     counter = 0;
+//     for (let factor = 2; factor < i; factor++) {
+//       if (i % factor === 0 && isPrime(factor)) {
+//         counter++;
+//       } else if (i % factor === 0 && !isPrime(factor)) {
+//         continue;
+//       }
+//       if (i === factor * factor && isPrime(factor)) {
+//         counter++;
+//       }
+//     }
+//     if (counter === k) {
+//       arr.push(i);
+//     }
+//   }
+//   let output = [];
+//   for (let i = start; i < arr.length; i++) {
+//     for (let next = start + 1; next < arr.length; next++) {
+//       if (arr[next] - arr[i] > step) {
+//         break;
+//       } else if (arr[next] - arr[i] === step) {
+//         output.push([arr[i], arr[next]]);
+//       }
+//     }
+//   }
+//   return output;
+// }
 
 function isPrime(num) {
   if (num === 0 || num === 1) {
@@ -76,4 +104,9 @@ function isPrime(num) {
 }
 
 // [4, 6, 9, 10, 14, 15, 21, 22, 25, 26, 33, 34, 35, 38, 39, 46, 49]
-console.log(kprimesStep(2, 2, 0, 50)); //=> [[4, 6], [33, 35]]
+// console.log(kprimesStep(2, 2, 0, 50)); //=> [[4, 6], [33, 35]]
+console.log(kprimesStep(6, 14, 2113665, 2113889)); //=> [[2113722, 2113736]])
+// kprimes_step(2, 2, 0, 50); // [[4, 6], [33, 35]]
+// kprimes_step(6, 14, 2113665, 2113889); // [[2113722, 2113736]])
+// kprimes_step(2, 10, 0, 50); // [[4, 14], [15, 25], [25, 35], [39, 49]]
+// kprimes_step(5, 20, 0, 50); // []
