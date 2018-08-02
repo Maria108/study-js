@@ -4,7 +4,7 @@ Examples
 "()"              =>  true
 ")(()))"          =>  false
 "("               =>  false
-"(())((()())())"  =>  true
+"(()))((()())())"  =>  true
 Constraints
 0 <= input.length <= 100
 
@@ -22,11 +22,17 @@ function validParentheses(parens) {
       return false;
     }
   }
-  if (openPar === closePar) {
-    return true;
-  } else {
-    return false;
-  }
+  return openPar === closePar;
 }
 
-console.log(validParentheses('(())((()())())'));
+// console.log(validParentheses('(())((()())())'));
+
+function validParentheses(parens) {
+  let counter = 0;
+  for (let i = 0; i < parens.length; i++) {
+    parens[i] === '(' ? counter++ : counter--;
+  }
+  return counter == 0;
+}
+
+console.log(validParentheses('(())((()())())))'));

@@ -28,30 +28,38 @@ So this function should return an array of all the pairs of k-prime numbers spac
 
  */
 
-function checkPrime(k, num) {
+function arrPrimeNum(num) {
+  let arrPrime = [];
+  let highNum = Math.floor(num / 2);
+  for (let factor = 2; factor < highNum; factor++) {
+    if (isPrime(factor)) {
+      arrPrime.push(factor);
+    }
+  }
+  return arrPrime;
+}
+
+function checkFactors(k, num) {
+  let arrPrime = arrPrimeNum(num);
   let counter = 0;
-  for (let factor = 2; factor < num; factor++) {
+  for (let factor = 2; factor < arrPrime.length; factor++) {
     counter = 0;
-    if (num % factor === 0 && isPrime(factor)) {
+    if (num % factor === 0) {
       counter++;
-    } else if (num % factor === 0 && !isPrime(factor)) {
-      continue;
     }
-    if (num === factor * factor && isPrime(factor)) {
+    if (num === factor * factor) {
       counter++;
     }
   }
-  if (counter === k) {
-    return true;
-  }
+  return counter === k;
 }
 
 function kprimesStep(k, step, start, nd) {
   let output = [];
-  for (let i = start; i < nd; i++) {
-    let end = start + step;
-    if (checkPrime(k, start) && checkPrime(k, end)) {
-      output.push([start, start + step]);
+  for (start; start < nd; start++) {
+    let finish = start + step;
+    if (checkFactors(k, start) && checkFactors(k, finish)) {
+      output.push([start, finish]);
     }
   }
   return output;
@@ -105,7 +113,7 @@ function isPrime(num) {
 
 // [4, 6, 9, 10, 14, 15, 21, 22, 25, 26, 33, 34, 35, 38, 39, 46, 49]
 console.log(kprimesStep(2, 2, 0, 50)); //=> [[4, 6], [33, 35]]
-console.log(kprimesStep(6, 14, 2113665, 2113889)); //=> [[2113722, 2113736]])
+// console.log(kprimesStep(6, 14, 2113665, 2113889)); //=> [[2113722, 2113736]])
 // kprimes_step(2, 2, 0, 50); // [[4, 6], [33, 35]]
 // kprimes_step(6, 14, 2113665, 2113889); // [[2113722, 2113736]])
 // kprimes_step(2, 10, 0, 50); // [[4, 14], [15, 25], [25, 35], [39, 49]]
