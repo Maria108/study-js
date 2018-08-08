@@ -6,11 +6,9 @@ Math.round()
 Math.ceil()
 Math.floor() */
 
-console.log(000000001 < 0);
-
 round = function(number) {
   let num = number.toString();
-  if (num.length > 1) {
+  if (num.includes('.')) {
     let arr = num.split('.');
     if (arr[1][0] >= 5) {
       return parseInt(arr[0]) + 1;
@@ -24,7 +22,7 @@ round = function(number) {
 
 Math.ceil = function(number) {
   let num = number.toString();
-  if (num.length > 1) {
+  if (num.includes('.')) {
     let arr = num.split('.');
     if (arr[1] > 0) {
       return parseInt(arr[0]) + 1;
@@ -38,8 +36,12 @@ Math.ceil = function(number) {
 
 Math.floor = function(number) {
   let num = number.toString();
-  let arr = num.split('.');
-  return parseInt(arr[0]);
+  if (num.includes('.')) {
+    let arr = num.split('.');
+    return parseInt(arr[0]);
+  } else {
+    return number;
+  }
 };
 
 console.log(round(4));
