@@ -6,7 +6,7 @@ Math.round()
 Math.ceil()
 Math.floor() */
 
-round = function(number) {
+Math.round = function(number) {
   let num = number.toString();
   if (num.includes('.')) {
     let arr = num.split('.');
