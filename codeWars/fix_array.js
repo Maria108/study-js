@@ -15,15 +15,15 @@ function solve(arr) {
   let fixArr = [];
   for (let i = 0; i < arr.length; i++) {
     fixArr.push(arr[i]);
-    let divider = arr[i] / 3;
-    let multiplier = arr[i] * 2;
+    let divider = fixArr[k] / 3;
+    let multiplier = fixArr[k] * 2;
     if (arr.includes(divider)) {
       fixArr.push(divider);
     } else if (arr.includes(multiplier)) {
       fixArr.push(multiplier);
     } else {
       fixArr = [];
-      continue;
+      break;
     }
   }
 }
