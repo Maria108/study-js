@@ -11,23 +11,35 @@ For the above example:
 solve([12,3,9,4,6,8]) = [9,3,6,12,4,8].
 More examples in the test cases. Good luck! */
 
+function divider(num) {
+  return num / 3;
+}
+
+function multiplier(num) {
+  return num * 2;
+}
+
 function solve(arr) {
   let fixArr = [];
-  for (let i = 0; i < arr.length; i++) {
+  for (let i = 0; i <= arr.length; i++) {
+    if (fixArr.length === arr.length) {
+      return fixArr;
+    }
     fixArr.push(arr[i]);
-    let divider = fixArr[k] / 3;
-    let multiplier = fixArr[k] * 2;
-    if (arr.includes(divider)) {
-      fixArr.push(divider);
-    } else if (arr.includes(multiplier)) {
-      fixArr.push(multiplier);
-    } else {
-      fixArr = [];
-      break;
+    for (let k = 1; k < arr.length; k++) {
+      if (arr.includes(divider(fixArr[fixArr.length - 1]))) {
+        fixArr.push(divider(fixArr[fixArr.length - 1]));
+      } else if (arr.includes(multiplier(fixArr[fixArr.length - 1]))) {
+        fixArr.push(multiplier(fixArr[fixArr.length - 1]));
+      } else {
+        fixArr = [];
+        break;
+      }
     }
   }
 }
 
+console.log(solve([9, 1, 3]));
 /* Test.assertDeepEquals(solve([1,3]),[3,1]);
 Test.assertDeepEquals(solve([4,2]),[2,4]);
 Test.assertDeepEquals(solve([12,3,9,4,6,8]),[9,3,6,12,4,8]);
