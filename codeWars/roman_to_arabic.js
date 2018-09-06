@@ -17,9 +17,21 @@ D          500
 M          1,000
 Remember that there can't be more than 3 identical symbols in a row. */
 
-function solution(number){
+function solution(number){ //  2463 = MMCDLXIII
+  let arr = number.toString().split('').reverse(); // 3 6 4 2
+  let output = ''
+  for (let i = 0; i < arr.length; i++) {
+    if (i === 0) {
+      while (arr[i] > 0) {
+        output += 'I'
+      }
+    }
+    
+  }
+}
+
   // convert the number to a roman numeral
-   var obj = {
+  var obj = {
     'I': 1,
     'V': 5,
     'X': 10,
@@ -46,6 +58,4 @@ function solution(number){
     }
 
     return sum
-}
-
 }
