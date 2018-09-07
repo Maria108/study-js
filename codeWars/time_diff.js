@@ -6,3 +6,30 @@ solve(["23:00","04:22","18:05","06:24"]) == "11:40". The max interval that the a
 In the second example, the alarm goes off 4 times in a day.
 
 More examples in test cases. Good luck! */
+
+function solve(arr) {
+  let sortArr = arr.sort();
+  let diff = '';
+  let sum = '';
+  for (i = 0; i < sortArr.length - 1; i++) {
+    sum = '';
+    let hours = sortArr[i + 1].slice(0, 2) - sortArr[i].slice(0, 2);
+    let minutes = sortArr[i + 1].slice(3) - sortArr[i].slice(3) - 1;
+    if (minutes < 0) {
+      hours -= 1;
+      minutes += 60;
+    }
+    sum = sum.concat(hours, ':', minutes);
+    if (sum > diff) {
+      diff = sum;
+    }
+  }
+  return diff;
+}
+
+console.log(solve(['21:14', '15:34', '14:51', '06:25', '15:30']));
+/* describe("Basic tests", function(){
+Test.assertEquals(solve(["14:51"]), "23:59");
+Test.assertEquals(solve(["23:00","04:22","18:05","06:24"]),"11:40");
+Test.assertEquals(solve(["21:14", "15:34", "14:51", "06:25", "15:30"]),"09:10");
+}); */
