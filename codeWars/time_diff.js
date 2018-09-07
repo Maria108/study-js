@@ -8,10 +8,13 @@ In the second example, the alarm goes off 4 times in a day.
 More examples in test cases. Good luck! */
 
 function solve(arr) {
+  if (arr.length === 1) {
+    return '23:59';
+  }
   let sortArr = arr.sort();
   let diff = '';
   let sum = '';
-  for (i = 0; i < sortArr.length - 1; i++) {
+  for (let i = 0; i < sortArr.length - 1; i++) {
     sum = '';
     let hours = sortArr[i + 1].slice(0, 2) - sortArr[i].slice(0, 2);
     let minutes = sortArr[i + 1].slice(3) - sortArr[i].slice(3) - 1;
@@ -24,10 +27,17 @@ function solve(arr) {
       diff = sum;
     }
   }
+  sum = '';
+  let lastHour = 24 - sortArr[sortArr.length - 1].slice(0, 2) + parseInt(sortArr[0].slice(0, 2));
+  let lastMinute = 0 - sortArr[sortArr.length - 1].slice(3) + parseInt(sortArr[0].slice(3) - 1);
+  sum = sum.concat(lastHour, ':', lastMinute);
+  if (sum > diff) {
+    diff = sum;
+  }
   return diff;
 }
 
-console.log(solve(['21:14', '15:34', '14:51', '06:25', '15:30']));
+console.log(solve(['23:00', '04:22', '18:05', '06:24']));
 /* describe("Basic tests", function(){
 Test.assertEquals(solve(["14:51"]), "23:59");
 Test.assertEquals(solve(["23:00","04:22","18:05","06:24"]),"11:40");
