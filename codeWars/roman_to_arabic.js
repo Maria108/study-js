@@ -20,17 +20,17 @@ Remember that there can't be more than 3 identical symbols in a row. */
 function solution(number) {
   //  2463 = MMCDLXIII
   let output = '';
-  let num = number % 1000;
+  // let num = number % 1000;
 
-  if (num < 4) {
-    while (num > 0) {
-      output += 'I';
-    }
-  } else if (num === 4) {
-    output += 'IV';
-  } else {
-    output += 'V';
-  }
+  // if (num < 4) {
+  //   while (num > 0) {
+  //     output += 'I';
+  //   }
+  // } else if (num === 4) {
+  //   output += 'IV';
+  // } else {
+  //   output += 'V';
+  // }
 }
 
 console.log(345 % 1000);
