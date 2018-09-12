@@ -6,3 +6,23 @@ Should return: 11 (the only odd number)
 
 [160, 3, 1719, 19, 11, 13, -21]
 Should return: 160 (the only even number) */
+
+function findOutlier(integers) {
+  if (integers[0] % 2 === 0) {
+    if (integers[1] % 2 === 0 || integers[2] % 2 === 0) {
+      for (let i = 0; i < integers.length; i++) {
+        if (integers[i] % 2 !== 0) {
+          return integers[i];
+        }
+      }
+    }
+  } else if (integers[0] % 2 !== 0) {
+    if (integers[1] % 2 !== 0 || integers[2] % 2 !== 0) {
+      for (let i = 0; i < integers.length; i++) {
+        if (integers[i] % 2 === 0) {
+          return integers[i];
+        }
+      }
+    }
+  }
+}
